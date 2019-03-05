@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Success Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+    .display {
+        width: 75%;
+        background-color: green;
+        margin: 25px auto;
+        padding: 20px;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 4px;
+    }
+    table {
+        margin-left: 2.5%;
+        margin-top: 1%;
+    }
+    h1 {
+        text-decoration: underline;
+    }
+</style>
+<body>
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+                <h3 class="display">{{message}}</h3>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Email Addresses Entered:</h1>
+    <table class=table>
+        <tr>
+            <th>Email</th>
+            <th>Datetime</th>
+        </tr>
+    {%for email in emails:%}
+        <tr>
+            <td>{{email['email']}}</td>
+            <td>{{email['created_at']}}</td>
+        </tr>
+    {%endfor%}
+    </table>
+
+</body>
+</html>

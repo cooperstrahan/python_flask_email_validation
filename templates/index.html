@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Email Validation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+    * {
+    margin: 0px;
+    padding: 0px;
+    }
+    .left {
+        text-align: center;
+        margin-top: 2.5%;
+        margin-left: 89%;
+    }
+    .box {
+        padding-top: 5%;
+        width: 75%;
+        margin: 0px auto;
+    }
+    .display {
+        width: 75%;
+        background-color: red;
+        margin: 25px auto;
+        padding: 20px;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 4px;
+    }
+</style>
+<body>
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+            {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                    <h3 class="display">{{message}}</h3>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/add" method="POST">
+            <div class="form-group row box">
+                <!-- <div class = "box"> -->
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email: </label>
+                    <div class="col-sm-10">
+                        <input type="text" name="email" class="form-control form-control-lg" id="colFormLabelLg">
+                    </div>
+                    <input class="btn btn-primary left" type="submit" value=" Submit ">
+                <!-- </div> -->
+            </div>
+        </form>
+</body>
+</html>
